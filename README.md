@@ -20,6 +20,6 @@ pyinstaller -F name_of_python_script.py
 </pre>
 </div>
 
-The -F input ensures that the executable is a single file that includes everything, rather then a folder. Once that's done navigate to the <b>dist</b> folder within the folder of your newly created python script, and grab the exe file.
+The -F flag ensures that the executable is a single file that includes everything, rather then a folder. Once that's done navigate to the <b>dist</b> folder within the folder of your newly created python script, and grab the exe file.
 
 The file is now created.
