@@ -37,10 +37,16 @@ def check_port_type(port, is_open):
         print('%4s' % port, port_status + "HTTP (Hypertext Transport Protocol) and HTTPS (HTTP over SSL)")
     elif (port == 110):
         print('%4s' % port, port_status + "POP3 (Post Office Protocol version 3)")
+    elif (port == 119):
+        print('%4s' % port, port_status + "Network News Transfer Protocol (NNTP)")
     elif (port == 135):
         print('%4s' % port, port_status + "Windows RPC")
     elif (port == 137) or (port == 138) or (port == 139):
         print('%4s' % port, port_status + "Windows NetBIOS over TCP/IP")
+    elif (port == 143):
+        print('%4s' % port, port_status + "Internet Message Access Protocol (IMAP)")
+    elif (port == 465):
+        print('%4s' % port, port_status + "URL Rendezvous Directory for SSM (Cisco protocol)")
     elif (port == 1433) or (port == 1434):
         print('%4s' % port, port_status + "Microsoft SQL Server")
     else:
@@ -79,14 +85,14 @@ def final_message():
 # Since the we scan all the ports on a seperate thread at once, the process is alot faster.
 # ip_target is the target we the program is scanning, while show_clport_opt is the flag for users to decide
 # if they want to see closed ports.
-def start_scan(ip_target, show_clport_opt):
+def start_scan(ip_target, show_clport_opt,  min_port, max_port):
     # scan ports 1 to 500.
     # Create a separate thread to scan each port. Each thread scans an assigned port.
     """If you get a "RuntimeError: can't start new thread", then you are running to many threads, consider
         lowering the min and max."""
-    min = 1
-    max = 500
-    for x in range(min, max):
+    min_p = int(min_port)
+    max_p = int(max_port)
+    for x in range(min_p, max_p):
         t = Thread(target=pScan, args=(x, ip_target, show_clport_opt))
         num_thrd.append(t)
 
@@ -109,10 +115,12 @@ def program_start():
     print('Running Port Scanner...')
     ip_target = input("Target Link/IP: ")
     show_clport_opt = input("Show Closed ports? (y/n) ")
+    min_port = input("Pick Min Range of Port: ")
+    max_port = input("Pick Max Range of Port: ")
     print('----------------------------------------')
     print('PORT | STATE |  SERVICE')
     print('----------------------------------------')
-    start_scan(ip_target, show_clport_opt)
+    start_scan(ip_target, show_clport_opt, min_port, max_port)
 
 
 # An array thread is used to simultaneously scan all ports at once
