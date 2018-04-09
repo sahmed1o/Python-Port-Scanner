@@ -121,3 +121,5 @@ num_thrd = []
 # This function call starts the program
 program_start()
 
+# Press any key to quit the program...
+input("Press any key to quit the program...")
