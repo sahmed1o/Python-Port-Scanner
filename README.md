@@ -4,9 +4,6 @@ A Port Scanner programmed in Python 3.6. This is a Network Recon tool, and its p
 <h1>DISCLAIMER</h1>
 This program is for educational/research purposes only. The author takes no responsibility and/or liability for how an individual chooses to use any of the source files provided. The author will not be liable for any losses and/or damages in connection to the use of the program and its provided files.
 
-
-<hr />
-
 <h2>Creating the Executable:</h2>
 When creating the executable file you want to use the python module, <b>pyinstaller</b>. This allows the program to be ran anywhere. The first thing required is the pyinstaller module, so install it using pip:
 
