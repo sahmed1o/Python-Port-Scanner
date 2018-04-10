@@ -85,7 +85,7 @@ def final_message():
 # Since the we scan all the ports on a seperate thread at once, the process is alot faster.
 # ip_target is the target we the program is scanning, while show_clport_opt is the flag for users to decide
 # if they want to see closed ports.
-def start_scan(ip_target, show_clport_opt,  min_port, max_port):
+def start_multithrd_scan(ip_target, show_clport_opt,  min_port, max_port):
     # scan ports 1 to 500.
     # Create a separate thread to scan each port. Each thread scans an assigned port.
     """If you get a "RuntimeError: can't start new thread", then you are running to many threads, consider
@@ -120,7 +120,7 @@ def program_start():
     print('----------------------------------------')
     print('PORT | STATE |  SERVICE')
     print('----------------------------------------')
-    start_scan(ip_target, show_clport_opt, min_port, max_port)
+    start_multithrd_scan(ip_target, show_clport_opt, min_port, max_port)
 
 
 # An array thread is used to simultaneously scan all ports at once
