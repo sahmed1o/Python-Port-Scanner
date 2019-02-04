@@ -20,7 +20,7 @@ def check_port_type(port, is_open):
     else:
         port_status = "  CLOSED   "
 
-    # designation for ports. These are the ports most often attacked, others can be included here as well.
+    # designation for ports. These are the most vulnerable ports, others can be included here as well.
     if(port == 25):
         print('%4s' % port, port_status + "SMTP (Simple Mail Transfer Protocol)")
     elif (port == 21):
@@ -83,7 +83,7 @@ def final_message():
 
 # This function is used to speed up the process of portscanning by splitting the scan into multiple threads.
 # Since the we scan all the ports on a seperate thread at once, the process is alot faster.
-# ip_target is the target we the program is scanning, while show_clport_opt is the flag for users to decide
+# ip_target is the target the program is scanning, while show_clport_opt is the flag for users to decide
 # if they want to see closed ports.
 def start_multithrd_scan(ip_target, show_clport_opt,  min_port, max_port):
     # scan ports 1 to 500.
